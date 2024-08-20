@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Expenses.Models.Expense
+
+<div class="text-center">
+    <h1 class="display-4">Create new expense</h1>
+
+
+</div>
+<form asp-action="CreateForm" asp-asp-controller="Home">
+    <label class="mt-4">value</label>
+    <input class="form-control" type="number" placeholder="000" asp-for="Value" />
+    <label class="mt-4">Description</label>
+    <input class="form-control" type="text" asp-for="Description" />
+    <button class="btn btn-primary mt-4" type="submit">ok</button>
+</form>

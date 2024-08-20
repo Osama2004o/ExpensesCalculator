@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Expense>
+
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Expense</h1>
+</div>
+
+<a class="btn btn-primary mb-4" href="Create">Create</a>
+
+<br />
+<table class="table table-bordered">
+    @foreach (var p in Model)
+    {
+        <tr>
+            <th>@p.ExpenseId</th>
+            <th>@p.Value</th>
+            <th>@p.Description</th>
+        </tr>
+    }
+</table>
+<h3 class="card">
+    Expenses = 
+    @Model.Sum(p => p.Value)
+</h3>
