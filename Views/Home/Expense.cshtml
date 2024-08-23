@@ -21,6 +21,10 @@
             <th>@p.ExpenseId</th>
             <th>@p.Value</th>
             <th>@p.Description</th>
+            <th>
+                <a class="btn btn-primary" asp-action="Create" asp-route-id="@p.ExpenseId" style="margin-right:5px">Edit</a>
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@p.ExpenseId">Delete</a>
+            </th>
         </tr>
     }
 </table>

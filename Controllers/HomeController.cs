@@ -7,7 +7,6 @@ namespace Expenses.Controllers
 {
     public class HomeController : Controller
     {
-        
 
         private readonly ExpenseContext _expenseContext;
 
@@ -32,17 +31,40 @@ namespace Expenses.Controllers
             return View();
         }
 
-
-
-        public IActionResult Create()
+        public IActionResult Delete(int id)
         {
-            return View();
+            var expenseInDp = _expenseContext.Expensess.SingleOrDefault(expenses => expenses.ExpenseId == id);
+            _expenseContext.Expensess.Remove(expenseInDp);
+            _expenseContext.SaveChanges();
+            return RedirectToAction("Expense");
+        }
+
+        public IActionResult Create(int? id)
+
+        {
+            if (id != null)
+            {
+                var expenseInDp = _expenseContext.Expensess.SingleOrDefault(expenses => expenses.ExpenseId == id);
+                return View(expenseInDp);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
         public IActionResult CreateForm(Expense model)
         {
-            _expenseContext.Add(model);
+            if (model.ExpenseId == 0)
+            {
+                //create
+                _expenseContext.Add(model);
+            }
+            else
+            {
+                _expenseContext.Update(model);
+            }
             _expenseContext.SaveChanges();
             return RedirectToAction("Expense");
         }

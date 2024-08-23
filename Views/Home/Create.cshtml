@@ -6,10 +6,10 @@
 
 <div class="text-center">
     <h1 class="display-4">Create new expense</h1>
-
-
 </div>
+
 <form asp-action="CreateForm" asp-asp-controller="Home">
+    <input type="hidden" asp-for="ExpenseId" />
     <label class="mt-4">value</label>
     <input class="form-control" type="number" placeholder="000" asp-for="Value" />
     <label class="mt-4">Description</label>
